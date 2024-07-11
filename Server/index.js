@@ -7,8 +7,8 @@ const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/Admin');
 const adminListingsRoutes = require('./routes/adminListings');
 const listingsRoutes = require('./routes/listings');
-const contactRoutes = require('./routes/contact');
-const inquiryRoutes = require('./routes/inquiry'); // Import the inquiry routes
+const contactRoute = require('./routes/contact');
+const inquiryRoute = require('./routes/inquiry');
 
 dotenv.config();
 
@@ -29,8 +29,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/admin/listings', adminListingsRoutes);
 app.use('/api/listings', listingsRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/inquiries', inquiryRoutes); // Use the inquiry routes
+app.use('/api/contact', contactRoute);
+app.use('/api/inquiries', inquiryRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
