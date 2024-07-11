@@ -3,7 +3,7 @@ const router = express.Router();
 const Listing = require('../models/Listing');
 const adminAuth = require('../Middleware/adminAuth');
 
-// POST /api/admin/listings - Add a new listing (Admin route)
+
 router.post('/', adminAuth, async (req, res) => {
     const { title, image, price, beds, baths } = req.body;
     try {
@@ -15,8 +15,6 @@ router.post('/', adminAuth, async (req, res) => {
         res.status(400).json({ message: "Error adding listing" });
     }
 });
-
-// DELETE /api/admin/listings/:id - Delete a listing by ID (Admin route)
 router.delete('/:id', adminAuth, async (req, res) => {
     try {
         const listingId = req.params.id;

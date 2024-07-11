@@ -1,4 +1,4 @@
-// routes/auth.js
+
 
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -8,11 +8,11 @@ const router = express.Router();
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Register route
+
 router.post('/register', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ email, password: hashedPassword });
         await newUser.save();
         res.status(201).send('User registered');
@@ -21,7 +21,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login route
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -29,7 +28,7 @@ router.post('/login', async (req, res) => {
         if (!user) {
             return res.status(400).send('Invalid credentials');
         }
-        const isMatch = await bcrypt.compare(password, user.password); // Compare the hashed password
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).send('Invalid credentials');
         }

@@ -1,10 +1,8 @@
-// routes/listings.js
 
 const express = require('express');
 const router = express.Router();
 const Listing = require('../models/Listing');
 
-// GET /api/listings - Get all listings (Public route)
 router.get('/', async (req, res) => {
     try {
         const listings = await Listing.find();

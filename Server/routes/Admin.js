@@ -3,7 +3,7 @@ const router = express.Router();
 const adminAuth = require('../Middleware/adminAuth');
 const User = require('../models/User');
 
-// GET /api/admin/users - Get all users (Admin route)
+
 router.get('/users', adminAuth, async (req, res) => {
     try {
         const users = await User.find().select('-password');
@@ -14,7 +14,7 @@ router.get('/users', adminAuth, async (req, res) => {
     }
 });
 
-// DELETE /api/admin/users/:id - Delete a user by ID (Admin route)
+
 router.delete('/users/:id', adminAuth, async (req, res) => {
     try {
         const userId = req.params.id;
